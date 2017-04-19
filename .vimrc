@@ -2,6 +2,7 @@
 if has("win32") || has("win16")
     set backupdir=~/vimfiles/backup
     set dir=~/vimfiles/temp
+    set undodir=~/vimfiles/undo
     nnoremap <F5> "=strftime("%m/%d/%Y %I:%M:%S %p")<CR>P
     inoremap <F5> <C-R>=strftime("%m/%d/%Y %I:%M:%S %p")<CR>
     nnoremap <silent> <F4> :!python %<CR>
@@ -9,6 +10,7 @@ else
     let os = substitute(system('uname'), "\n", "", "")
     set backupdir=~/.vim/backup
     set dir=~/.vim/temp
+    set undodir=~/.vim/undo
     if os == "OpenBSD"
         " Do OpenBSD-specific stuff.
         nnoremap <silent> <F4> :!clear;python2.7 %<CR>
@@ -31,19 +33,58 @@ else
 endif
 
 syntax on
+set undofile
+set wrap
+set autoread "Reload files changed outside vim
 set bk "set backup
 set encoding=utf-8
 set visualbell
-set listchars=tab:>~,nbsp:_,trail:.
+"set listchars=tab:>~,nbsp:_,trail:.
+"set listchars=tab:â–¸\ ,nbsp:_,trail:Â·
+
+" so invisibles
+set list
+set listchars=
+set listchars+=tab:>\ 
+set listchars+=trail:·
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=nbsp:.
+
 set list
 
 "This section is for general vim settings
 set nocompatible "This fixes the problem where arrow keys do not function properly on some systems.
 set ruler
-set nu  "Enables line numbering
+set nu "Enables line numbering
 
+" lazy file name tab completion
+set wildmode=longest,list,full
 " Try wildmenu with ':h wi[tab]'
 set wildmenu
+set wildignorecase
+" ignore files vim doesnt use
+set wildignore+=.git,.hg,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
+set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=*.swp,.lock,.DS_Store,._*
+
+" case insensitive search
+set ignorecase
+set smartcase
+set infercase
+" the /g flag on :s substitutions by default
+set gdefault
+
+
+" disable startup message
+"set shortmess+=I
 
 " Try hlsearch with quicksearch '/w'
 set hlsearch
