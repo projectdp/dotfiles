@@ -1,0 +1,62 @@
+XTerm*loginShell:true
+urxvt*transparent: true
+urxvt*shading: 60
+URxvt*letterSpace: -1
+URxvt*scrollBar_right: true
+#urxvt*font: xft:comic neue:bold:size=8
+urxvt*font: xft:dejavu sans mono:pixelsize=11:antialias=true
+!URxvt*font: xft:inconsolata:size=9.8:antialias=true:hinting=true
+!URxvt*font: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true
+!URxvt*font: pango:Vera:pixelsize=12
+
+# URL locating stuff
+URxvt.perl-ext-common: default,matcher
+URxvt*url-launcher: /usr/local/bin/firefox
+URxvt.matcher.button: 1
+# Press command+delete to directly open the last link found.
+URxvt.keysym.C-Delete: perl:matcher:last
+# Press Mod+delete to open a list of links to choose from.
+URxvt.keysym.M-Delete: perl:matcher:list
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.colorUL: #4682B4
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! special
+*.foreground:   #ffffff
+*.background:   #101010
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #262626
+*.color8:       #616161
+
+! red
+*.color1:       #830e0c
+*.color9:       #c84f4c
+
+! green
+*.color2:       #a72b28
+*.color10:      #ef8380
+
+! yellow
+*.color3:       #c64b48
+*.color11:      #ffb1af
+
+! blue
+*.color4:       #ed7c79
+*.color12:      #ffd1d0
+
+! magenta
+*.color5:       #ffaba9
+*.color13:      #ffe9e9
+
+! cyan
+*.color6:       #ffcecb
+*.color14:      #fff8f8
+
+! white
+*.color7:       #eaeaea
+*.color15:      #ffffff

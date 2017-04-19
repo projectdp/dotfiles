@@ -1,0 +1,52 @@
+general {
+        colors = true
+        interval = 5
+}
+
+order += "volume master"
+order += "disk /"
+order += "wireless rtwn0"
+order += "ethernet em0"
+order += "battery 0"
+order += "cpu_usage"
+order += "load"
+order += "tztime local"
+
+disk "/" {
+        format = "%free/%total"
+}
+
+wireless rtwn0 {
+        format_up = "rtwn0: %essid %ip"
+        format_down = "rtwn0: down"
+}
+
+ethernet em0 {
+        format_up = "em0: %ip"
+        format_down = "em0: down"
+}
+
+battery 0 {
+        format = "bat: %percentage %remaining"
+        low_threshold = 15
+}
+
+tztime local {
+        format = "%m-%d-%Y %r"
+}
+
+cpu_usage {
+        format = "cpu: %usage"
+}
+
+load {
+        format = "load: %5min"
+}
+
+volume master {
+        format = "vol: %volume"
+        format_muted = "vol: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
