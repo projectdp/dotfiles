@@ -3,9 +3,17 @@ if has("win32") || has("win16")
     set backupdir=~/vimfiles/backup
     set dir=~/vimfiles/temp
     set undodir=~/vimfiles/undo
+    "Insert date/timestamp in normal mode
     nnoremap <F5> "=strftime("%m/%d/%Y %I:%M:%S %p")<CR>P
+    "Insert date/timestamp in insert mode
     inoremap <F5> <C-R>=strftime("%m/%d/%Y %I:%M:%S %p")<CR>
+    "Execute current script in python
     nnoremap <silent> <F4> :!python %<CR>
+    "This mapping is for MS Windows to increment numbers. This is normally done with Control+A in Unix.
+    "Edit - for some reason this remap doesn't work, maybe the mswin.vim overrides the behavior. It works if setting ':nnoremap <A-a> <C-a>' manually.
+    nnoremap <A-a> <C-a>
+    "This mapping is for MS Windows to decrement numbers. This is normally done with Control+X in Unix.
+    nnoremap <A-x> <C-x>
 else
     let os = substitute(system('uname'), "\n", "", "")
     set backupdir=~/.vim/backup
@@ -32,6 +40,7 @@ else
     source $VIMRUNTIME/menu.vim
 endif
 
+
 syntax on
 set undofile
 set wrap
@@ -51,12 +60,13 @@ set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=nbsp:.
 
-set list
-
 "This section is for general vim settings
 set nocompatible "This fixes the problem where arrow keys do not function properly on some systems.
 set ruler
 set nu "Enables line numbering
+"Toggle relative numbering
+autocmd InsertLeave * :set norelativenumber
+autocmd InsertEnter * :set relativenumber
 
 " lazy file name tab completion
 set wildmode=longest,list,full
@@ -81,7 +91,8 @@ set smartcase
 set infercase
 " the /g flag on :s substitutions by default
 set gdefault
-
+set cursorline
+set cursorcolumn
 
 " disable startup message
 "set shortmess+=I
