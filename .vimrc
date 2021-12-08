@@ -200,8 +200,6 @@ nnoremap <Leader>rds :%s/\n\{3,}/\r\r/g<CR>
 :ia -- ____________________________________________________________________________<CR><CR>
 :ia s- ____________________________________________________________________________<CR><C-R>=strftime("%m/%d/%Y %I:%M:%S %p")<CR><CR>
 :ia S- ____________________________________________________________________________<CR><C-R>=strftime("%m/%d/%Y %I:%M:%S %p")<CR><CR>
-:ia x- <C-R>=strftime("%m/%d/%Y %I:%M:%S %p")<CR><CR>Updated by Daniel: Hostname/CPU/RAM/Disk Space information on ticket.
-:ia z- Control ID:<CR><CR><CR>Rationale:<CR><CR><CR>Remediation:<CR><CR><CR>Steps to Reproduce:<CR>
 
 " Open any file with a pre-existing swapfile in readonly mode:
 
